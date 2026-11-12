@@ -1,0 +1,10 @@
+filters:
+  and:
+    - file.inFolder("Projects")
+views:
+  - type: table
+    name: Active Projects
+    order:
+      - file.name
+      - status
+      - updated

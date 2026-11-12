@@ -1,0 +1,32 @@
+{
+  "nodes": [
+    {
+      "id": "node-north-star",
+      "type": "file",
+      "file": "brain/North Star.md",
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 180
+    },
+    {
+      "id": "node-decisions",
+      "type": "file",
+      "file": "brain/Key Decisions.md",
+      "x": 400,
+      "y": 0,
+      "width": 320,
+      "height": 180
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-1",
+      "fromNode": "node-north-star",
+      "fromSide": "right",
+      "toNode": "node-decisions",
+      "toSide": "left",
+      "label": "informs"
+    }
+  ]
+}

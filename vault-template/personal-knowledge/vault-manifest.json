@@ -1,0 +1,6 @@
+{
+  "template": "personal-knowledge",
+  "version": "0.1.0",
+  "private_paths": ["02_Areas/Personal/", "memories/private/"],
+  "user_content_roots": ["00_Inbox/", "01_Projects/", "02_Areas/", "03_Resources/", "04_Archive/", "Daily Notes/", "memories/"]
+}

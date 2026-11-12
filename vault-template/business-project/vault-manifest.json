@@ -1,0 +1,6 @@
+{
+  "template": "business-project",
+  "version": "0.1.0",
+  "private_paths": ["memories/private/"],
+  "user_content_roots": ["Goals/", "Projects/", "Meetings/", "Decisions/", "memories/"]
+}

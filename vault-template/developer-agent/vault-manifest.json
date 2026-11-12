@@ -1,0 +1,6 @@
+{
+  "template": "developer-agent",
+  "version": "0.1.0",
+  "private_paths": ["memories/private/"],
+  "user_content_roots": ["brain/", "memories/", "Skills/", "working-dir/"]
+}

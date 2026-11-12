@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+.tm-brain/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example

@@ -53,3 +53,10 @@ python3 -m tm_second_brain.cli --vault ./my-vault backup ./vault-backup.tar.gz
 
 * **شفافية النماذج والتكلفة:** [`MODEL-REQUIREMENTS.md`](../../MODEL-REQUIREMENTS.md)
 * **الترخيص:** MIT License — [`LICENSE`](../../LICENSE) و[`THIRD_PARTY_NOTICES.md`](../../THIRD_PARTY_NOTICES.md)
+
+---
+
+## ٦. الأدلة والمقالات الشاملة
+
+* **Molavi.pro (الدليل العربي):** [ما هو TM Second Brain؟ الدليل الشامل للذاكرة الدائمة والعقل الثاني للبشر ووكلاء الذكاء الاصطناعي](https://molavi.pro/ar/notes/tm-second-brain-persistent-memory)
+* **Inten (English Guide):** [Why Your AI Sales & Engineering Stack Forgets Everything Overnight—And How TM Second Brain Fixes It at $0.00](https://inten.asia/blog/tm-second-brain-persistent-memory-en)

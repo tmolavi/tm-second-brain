@@ -53,3 +53,10 @@ python3 -m tm_second_brain.cli --vault ./my-vault backup ./vault-backup.tar.gz
 
 * **Model və Xərc Şəffaflığı:** [`MODEL-REQUIREMENTS.md`](../../MODEL-REQUIREMENTS.md)
 * **Lisenziya:** MIT License — [`LICENSE`](../../LICENSE) və [`THIRD_PARTY_NOTICES.md`](../../THIRD_PARTY_NOTICES.md)
+
+---
+
+## 6. Ətraflı Bələdçilər və Məqalələr
+
+* **Molavi.pro (Azərbaycan dili):** [TM Second Brain Nədir? İnsanlar və Süni İntellekt Agentləri Üçün Davamlı Yaddaş Bələdçisi](https://molavi.pro/az/notes/tm-second-brain-persistent-memory)
+* **Inten (English Guide):** [Why Your AI Sales & Engineering Stack Forgets Everything Overnight—And How TM Second Brain Fixes It at $0.00](https://inten.asia/blog/tm-second-brain-persistent-memory-en)

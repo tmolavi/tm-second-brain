@@ -69,3 +69,10 @@ python3 -m tm_second_brain.cli --vault ./my-vault backup ./vault-backup.tar.gz
 * **Architecture & Contracts:** [`ARCHITECTURE.md`](ARCHITECTURE.md), [`API-SPEC.md`](API-SPEC.md), [`ADAPTER-CONTRACTS.md`](ADAPTER-CONTRACTS.md), [`INTEGRATION-SPEC.md`](INTEGRATION-SPEC.md)
 * **Model & Cost Transparency:** [`MODEL-REQUIREMENTS.md`](MODEL-REQUIREMENTS.md) ($0.00 default, zero mandatory API keys)
 * **License:** MIT License — [`LICENSE`](LICENSE) and [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)
+
+---
+
+## 6. Comprehensive Guides & Publications
+
+* **Molavi.pro (English Guide):** [What Is TM Second Brain? A Complete Guide to Persistent Memory for Humans and AI Agents](https://molavi.pro/notes/tm-second-brain-persistent-memory)
+* **Inten (Sales OS & Architecture Guide):** [Why Your AI Sales & Engineering Stack Forgets Everything Overnight—And How TM Second Brain Fixes It at $0.00](https://inten.asia/blog/tm-second-brain-persistent-memory-en)

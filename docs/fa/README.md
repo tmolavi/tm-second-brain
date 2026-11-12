@@ -53,3 +53,10 @@ python3 -m tm_second_brain.cli --vault ./my-vault backup ./vault-backup.tar.gz
 
 * **شفافیت مدل و هزینه:** [`MODEL-REQUIREMENTS.md`](../../MODEL-REQUIREMENTS.md)
 * **مجوز انتشار:** MIT License — [`LICENSE`](../../LICENSE) و [`THIRD_PARTY_NOTICES.md`](../../THIRD_PARTY_NOTICES.md)
+
+---
+
+## ۶. راهنماها و مقالات جامع (فارسی)
+
+* **مولوی‌پرو (راهنمای جامع):** [TM Second Brain چیست؟ راهنمای کامل حافظه دائمی و مغز دوم برای انسان‌ها و ایجنت‌های هوش مصنوعی](https://molavi.pro/fa/notes/tm-second-brain-persistent-memory)
+* **اینتن (معماری حافظه برند و تیم فروش):** [چرا هوش مصنوعی کسب‌وکارتان هر روز حافظه‌اش را از دست می‌دهد؟ معرفی TM Second Brain](https://inten.asia/blog/tm-second-brain-persistent-memory)

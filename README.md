@@ -35,6 +35,7 @@
 
 ## 3. Ecosystem & Adapter Support
 
+* **Flagship Operating Ecosystem:** Native memory & knowledge engine for [**TM Molavi Agentic OS**](https://github.com/tmolavi/molavi-agentic-os) (`pip install molavi-agentic-os`).
 * **Obsidian:** Safe `.md` read/write (auto-backup before overwrite), YAML frontmatter, wikilinks, `.base` and `.canvas` preservation.
 * **First-Class TM Targets (Independently Isolated):**
   * **Hamzad Core** (`HamzadBridge` for `MemoryService` / `MemoryInterface`, non-duplicating)

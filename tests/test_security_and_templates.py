@@ -82,3 +82,64 @@ def test_starter_vault_templates_preserve_user_files(tmp_path: Path, template_na
     assert second["copied"] == 0
     assert second["skipped"] > 0
     assert (vault / "Home.md").read_text(encoding="utf-8") == "# My Custom Home\n"
+
+
+def test_sensitive_secrets_redacted_before_persistence_on_disk(tmp_path: Path) -> None:
+    store = MarkdownMemoryStore(tmp_path)
+    raw_api_key = "sk-12345678901234567890abcdef"
+    raw_gh_token = "ghp_12345678901234567890abcdef"
+    raw_google_key = "AIzaSyD12345678901234567890abcdef"
+    
+    result = store.remember(
+        f"API credentials for {raw_api_key}",
+        f"Here is the secret token: {raw_gh_token} and google: {raw_google_key}",
+        scope=MemoryScope.GENERAL,
+    )
+    rec = result.record
+    file_on_disk = tmp_path / rec.relative_path
+    disk_content = file_on_disk.read_text(encoding="utf-8")
+
+    # Secrets must be redacted BEFORE writing to disk
+    assert raw_api_key not in disk_content
+    assert raw_gh_token not in disk_content
+    assert raw_google_key not in disk_content
+    assert "[REDACTED_API_KEY]" in disk_content
+    assert "[REDACTED_GITHUB_TOKEN]" in disk_content
+    assert "[REDACTED_GOOGLE_KEY]" in disk_content
+
+
+def test_sensitive_secrets_redacted_in_corrections_log(tmp_path: Path) -> None:
+    store = MarkdownMemoryStore(tmp_path)
+    res = store.remember("Original Note", "Initial body", scope=MemoryScope.GENERAL)
+    rec = res.record
+
+    raw_secret_in_reason = "sk-secretreason123456789012345"
+    raw_secret_in_body = "sk-newsecretbody123456789012345"
+
+    store.correct(
+        rec.id,
+        "Updated Title",
+        f"Updated body containing {raw_secret_in_body}",
+        reason=f"Correcting due to leaked key {raw_secret_in_reason}",
+    )
+
+    corrections_log_file = tmp_path / ".tm-brain" / "corrections.jsonl"
+    log_content = corrections_log_file.read_text(encoding="utf-8")
+
+    assert raw_secret_in_reason not in log_content
+    assert "[REDACTED_API_KEY]" in log_content
+
+
+def test_hermes_adapter_stores_redacted_episodes_and_kv(tmp_path: Path) -> None:
+    from tm_second_brain.adapters.hermes import MainHermesAdapter
+    store = MarkdownMemoryStore(tmp_path)
+    adapter = MainHermesAdapter(store)
+
+    raw_key = "sk-hermessecret123456789012345"
+    adapter.store_episode("sess1", "agent1", {"title": "Test episode", "content": f"Secret: {raw_key}"})
+
+    all_disk_files = list(tmp_path.rglob("*.md"))
+    combined_text = "\n".join(f.read_text(encoding="utf-8") for f in all_disk_files)
+    assert raw_key not in combined_text
+    assert "[REDACTED_API_KEY]" in combined_text
+

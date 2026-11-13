@@ -288,6 +288,9 @@ class MarkdownMemoryStore:
         return conflicts
 
     def _write_record(self, record: MemoryRecord, path: Path | None = None) -> MemoryRecord:
+        if self.privacy:
+            record.title = self.privacy.redact(record.title)
+            record.body = self.privacy.redact(record.body)
         target = path or (
             self.vault_root / record.relative_path
             if record.relative_path
@@ -473,11 +476,12 @@ class MarkdownMemoryStore:
         )
         self._write_record(old, path=self.vault_root / old.relative_path)
 
+        safe_reason = self.privacy.redact(reason) if self.privacy else reason
         event = CorrectionEvent(
             timestamp=now,
             old_id=old.id,
             new_id=new_record.id,
-            reason=reason,
+            reason=safe_reason,
             source_agent=source_agent,
         )
         with self.corrections_log.open("a", encoding="utf-8") as handle:

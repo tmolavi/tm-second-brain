@@ -1,1 +1,5 @@
-"""Feedback-driven skill improvement with L1/L2 human approval gates (Phase 6+)."""
+from .activity_log import ActivityLogger
+from .feedback import FeedbackManager, LearningProposal
+from .decision_ledger import DecisionLedger, DecisionRecord
+
+__all__ = ["ActivityLogger", "FeedbackManager", "LearningProposal", "DecisionLedger", "DecisionRecord"]

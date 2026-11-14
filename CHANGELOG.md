@@ -2,6 +2,12 @@
 
 All notable changes to `tm-second-brain` will be documented in this file.
 
+## [0.2.0] - 2026-11-14
+### Added
+- **Architecture Decision Record (ADR) & Rejected Decisions Ledger:** Added `DecisionLedger` (`tm_second_brain.learning.decision_ledger`) with append-only JSON persistence in `.tm-brain/decision-ledger.json` and automatic Markdown generation in `Decisions/DECISION_LEDGER.md`.
+- **Doubt-Driven Rejection Tracking:** Explicit method `reject_proposal(...)` capturing technical context, rejected alternatives, physical evidence of failure, and anti-rationalization proof.
+- **Unit & Acceptance Test Suite:** Added `tests/test_decision_ledger.py` bringing total passed tests to 42.
+
 ## [0.1.0] - 2026-11-12
 ### Added
 - Phase 6 Intelligence Layer: `SQLiteFTSBackend` (WAL), `HybridRetrievalBackend`, optional disabled-by-default `QMDRetrievalAdapter` & `OllamaRetrievalAdapter`, `FeedbackManager` (L1→L2 gate), and `ActivityLogger`.

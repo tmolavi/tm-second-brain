@@ -48,7 +48,19 @@ In `molavi-agentic-os/molavi_agentic_os/memory/base.py`, `MemoryInterface` defin
 
 ---
 
-## 4. License Verification Against Actual Source Files
+## 4. Multi-Agent Orchestration & AutoSwarm Pattern Integration
+
+### 4.1 Zero-Duplication Orchestration Contract
+`tm-agent-orchestration` does **not** create a second Hermes or duplicate Hamzad AI Gateway/Model Router. It defines portable task execution contracts:
+* **Delegation Contract (`TaskUnit`):** Encapsulates goal, action, assigned agent role, inputs, expected artifacts, dependencies, and risk level.
+* **Redacted Inter-Agent Envelopes (`TaskEnvelope`):** Passes structured messages between agents with automatic secret redaction via `PrivacyPolicy`.
+* **Durable Session Recovery (`SessionJournal`):** Persists session checkpoints into `.tm-brain/orchestration_sessions/<session_id>.json`. Interrupted runs resume without re-executing already completed tasks.
+* **Approval Gates:** High-risk tasks pause execution in `BLOCKED_ON_APPROVAL` and require tokenized operator approval before proceeding.
+* **Result Aggregation:** Evaluates tangible evidence against Foreman rules, flags contradictory outputs across agents, and produces a consolidated synthesis.
+
+---
+
+## 5. License Verification Against Actual Source Files
 
 * **Core (`tm_second_brain/`):** 100% original Python 3.10+ standard library code under **MIT License** (`LICENSE`).
 * **Dependencies (`pyproject.toml`):** `dependencies = []` (zero runtime third-party packages). Dev-only optional dependencies are `pytest>=8.0` (MIT) and `ruff>=0.6.0` (MIT).

@@ -118,6 +118,15 @@ Enforced at **every** read, search, MCP response, and export boundary:
 * **Backup & Restore:** Deterministic `.tar.gz` / `.zip` + JSON bundle export/import with SHA-256 manifest verification.
 * **Safe Upgrade:** Creates a timestamped backup before updating infrastructure files and never overwrites `user_content_roots`.
 
+### 3.6 Portable Multi-Agent Orchestration (`orchestration/`)
+Inspired by **HKUDS/AutoSwarm**, built into TM Second Brain with zero external dependencies:
+1. **Role-Based Delegation (`TaskUnit`):** Matches actions against capability catalog (`AgentRole`), binding inputs, expected artifacts, and acceptance criteria.
+2. **Parallel DAG Execution:** Dispatches independent subtasks concurrently across bounded worker pool (`max_workers`), gating dependent tasks.
+3. **Structured Inter-Agent Communication (`TaskEnvelope`):** Enforces secret and PII redaction via `PrivacyPolicy`, maintaining lineage without bloating context.
+4. **Session Recovery (`SessionJournal`):** Checkpoints state into `.tm-brain/orchestration_sessions/<session_id>.json`; `resume_session()` skips completed tasks and executes only pending/failed tasks without duplicate side-effects.
+5. **Approval Gates (`ApprovalRequest`):** Pauses sensitive, destructive, credential, or production deployment actions in `BLOCKED_ON_APPROVAL` until an operator approves.
+6. **Result Aggregation & Conflict Detection:** Validates Foreman tangible artifacts, catches contradictory output values across agents, and synthesizes consensus findings.
+
 ---
 
 ## 4. Ecosystem & Adapter Contracts

@@ -119,4 +119,22 @@ class RetrievalBackend(Protocol):
 | `tm-brain restore <archive>` | Restore backup safely without clobbering newer files unless `--force` | L2 |
 | `tm-brain export <out.json>` | Export non-private memories (or `--include-private` explicitly) | L0/L2 |
 | `tm-brain import-bundle <in.json>` | Import portable memory bundle idempotently | L1/L2 |
+| `tm-brain orchestrate list` | List persisted multi-agent orchestration sessions | L0 |
+| `tm-brain orchestrate status <id>` | Inspect task progress, evidence, and approvals for a session | L0 |
 | `tm-brain health` | Verify vault integrity, index status, and privacy rules | L0 |
+
+---
+
+## 6. Agent Orchestration API (`AgentOrchestratorProtocol`)
+
+Defined in `tm_second_brain/core/contracts.py`:
+
+```python
+class AgentOrchestratorProtocol(Protocol):
+    def select_agent_for_action(self, action: str, preferred_agent: str | None = None) -> str: ...
+    def run_session(self, session_id: str, tasks: list[Any], runner: Any, *, metadata: dict[str, Any] | None = None) -> tuple[dict[str, Any], list[Any]]: ...
+    def resume_session(self, session_id: str, runner: Any, *, metadata: dict[str, Any] | None = None) -> tuple[dict[str, Any], list[Any]]: ...
+    def approve_task(self, ticket_id: str, approver: str = "human-operator", reason: str = "Approved by operator") -> bool: ...
+    def aggregate_results(self, session_id: str, tasks: Any) -> Any: ...
+```
+

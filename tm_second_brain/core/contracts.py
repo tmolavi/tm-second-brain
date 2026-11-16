@@ -130,3 +130,41 @@ class HamzadMemoryBridge(Protocol):
     def sync_episodes_to_vault(self, session_id: str, *, project: str) -> int: ...
 
     def recall_for_session(self, project: str, limit: int = 10) -> list[dict[str, Any]]: ...
+
+
+@runtime_checkable
+class AgentOrchestratorProtocol(Protocol):
+    """Protocol for multi-agent delegation, parallel execution, recovery, and aggregation."""
+
+    def select_agent_for_action(self, action: str, preferred_agent: str | None = None) -> str: ...
+
+    def run_session(
+        self,
+        session_id: str,
+        tasks: list[Any],
+        runner: Any,
+        *,
+        metadata: dict[str, Any] | None = None,
+    ) -> tuple[dict[str, Any], list[Any]]: ...
+
+    def resume_session(
+        self,
+        session_id: str,
+        runner: Any,
+        *,
+        metadata: dict[str, Any] | None = None,
+    ) -> tuple[dict[str, Any], list[Any]]: ...
+
+    def approve_task(
+        self,
+        ticket_id: str,
+        approver: str = "human-operator",
+        reason: str = "Approved by operator",
+    ) -> bool: ...
+
+    def aggregate_results(
+        self,
+        session_id: str,
+        tasks: Any,
+    ) -> Any: ...
+

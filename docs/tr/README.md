@@ -14,6 +14,7 @@
 * **Kaynak, Çakışma Tespiti ve Düzeltme Geçmişi:** Gerçeklerin üzerine sessizce yazmaz; önceki sürümleri `supersedes` / `superseded_by` zinciri ve `.tm-brain/corrections.jsonl` günlüğü ile korur.
 * **Proje ve Ortam İzolasyonu:** Projeler arasında ve **Hamzad Core**, **Main Hermes** ile **Hermes Personal Desktop** arasında sıkı izolasyon.
 * **Ücretsiz Çevrimdışı Arama:** Yerleşik Python BM25 + wikilink grafik genişletme (`expand`) ve isteğe bağlı QMD/Ollama desteği.
+* **Taşınabilir Ajan Orkestrasyonu (`tm-agent-orchestration`):** AutoSwarm prensiplerinden ilham alan çoklu ajan görev dağıtımı, paralel DAG yürütme, sır maskeleme, oturum kurtarma ve insan onay kapıları.
 * **Gizlilik ve Sır Maskeleme:** `private: true` / `private_paths` dışlama ve MCP/dışa aktarım sınırlarında API anahtarı maskeleme.
 * **Güvenli Yedekleme ve Geri Yükleme:** SHA-256 doğrulamalı `.tar.gz` yedekleri.
 
@@ -44,13 +45,16 @@ python3 -m tm_second_brain.cli --vault ./my-vault init --template developer-agen
 python3 -m tm_second_brain.cli --vault ./my-vault remember --title "Use WAL mode" --body "Enable SQLite WAL." --project core
 python3 -m tm_second_brain.cli --vault ./my-vault search "WAL" --project core
 python3 -m tm_second_brain.cli --vault ./my-vault install-adapter codex
+python3 -m tm_second_brain.cli --vault ./my-vault orchestrate list
 python3 -m tm_second_brain.cli --vault ./my-vault backup ./vault-backup.tar.gz
 ```
 
 ---
 
-## 5. Lisans ve Model Şeffaflığı
+## 5. Mimari, Beceriler ve Lisans
 
+* **Ajan Orkestrasyon Becerisi:** [`skills/tm-agent-orchestration/SKILL.md`](../../skills/tm-agent-orchestration/SKILL.md) — AutoSwarm esintili çoklu ajan koordinasyonu.
+* **Mimari ve Sözleşmeler:** [`ARCHITECTURE.md`](../../ARCHITECTURE.md), [`API-SPEC.md`](../../API-SPEC.md), [`ADAPTER-CONTRACTS.md`](../../ADAPTER-CONTRACTS.md) ve [`INTEGRATION-SPEC.md`](../../INTEGRATION-SPEC.md)
 * **Model ve Maliyet Şeffaflığı:** [`MODEL-REQUIREMENTS.md`](../../MODEL-REQUIREMENTS.md)
 * **Lisans:** MIT License — [`LICENSE`](../../LICENSE) ve [`THIRD_PARTY_NOTICES.md`](../../THIRD_PARTY_NOTICES.md)
 

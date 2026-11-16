@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tm-second-brain"
-version = "0.1.0"
+version = "0.3.0"
 description = "Original, modular, multilingual, agent-agnostic Second Brain and Persistent Memory system."
 readme = "README.md"
 license = { file = "LICENSE" }

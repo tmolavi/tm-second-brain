@@ -30,7 +30,7 @@ tm-brain --vault ./my-vault init --template developer-agent
 
 ١. **الطبقة ١ (التخزين القياسي):** ملفات Markdown + YAML frontmatter + روابط الويكي تحت `memories/`، وسجل النشاط في `working-dir/agent-log/`، وذاكرة تخزين مؤقت قابلة لإعادة البناء SQLite FTS5 في `.tm-brain/index.db` (وضع WAL).
 ٢. **الطبقة ٢ (النواة النقية بلغة Python):** دورة حياة الذاكرة (`draft` → `active` → `superseded` → `archived`)، والمصدر، وكشف التعارضات، وعزل المشاريع والبيئات، والبحث الهجين BM25 + الرسم البياني، وبوابة التعلم L1→L2، والنسخ الاحتياطي SHA-256.
-٣. **الطبقة ٣ (المحولات):** Obsidian، وخادم MCP (`tm-brain mcp`)، ووكلاء البرمجة (`codex`، `claude-code`، `gemini-cli`، `opencode`، `goose`، `antigravity`)، وأربعة أهداف معزولة لمنظومة TM (`hamzad-core`، `main-hermes`، `hermes-personal-desktop-finland`، `hermes-personal-desktop-mac`).
+٣. **الطبقة ٣ (المحولات والتنسيق):** Obsidian، وخادم MCP (`tm-brain mcp`)، ووكلاء البرمجة (`codex`، `claude-code`، `gemini-cli`، `opencode`، `goose`، `antigravity`)، ومهارة التنسيق (`tm-agent-orchestration`)، وأربعة أهداف معزولة لمنظومة TM (`hamzad-core`، `main-hermes`، `hermes-personal-desktop-finland`، `hermes-personal-desktop-mac`).
 
 ## ٤. أمثلة الاستخدام
 
@@ -38,6 +38,8 @@ tm-brain --vault ./my-vault init --template developer-agent
 tm-brain --vault ./my-vault remember --title "WAL Mode" --body "Enable SQLite WAL." --project core --confidence verified --verification "pytest"
 tm-brain --vault ./my-vault search "WAL" --project core
 tm-brain --vault ./my-vault correct mem_20261112_abc123 --title "WAL Mode" --body "Enable WAL + synchronous=NORMAL." --reason "Throughput tuning"
+tm-brain --vault ./my-vault orchestrate list
+tm-brain --vault ./my-vault orchestrate status sess_001
 tm-brain --vault ./my-vault learn log --skill code-review --outcome missed --rule "Check empty inputs"
 tm-brain --vault ./my-vault learn scan --min-occurrences 2
 tm-brain --vault ./my-vault backup ./backup.tar.gz

@@ -14,6 +14,7 @@
 * **Mənşə, Toqquşma Aşkarlanması və Düzəliş Tarixçəsi:** Məlumatların üzərinə səssizcə yazmır; əvvəlki versiyaları `supersedes` / `superseded_by` zənciri və `.tm-brain/corrections.jsonl` jurnalı ilə qoruyur.
 * **Layihə və Mühit İzolyasiyası:** Layihələr arasında, həmçinin **Hamzad Core**, **Main Hermes** və **Hermes Personal Desktop** arasında ciddi izolyasiya.
 * **Ödənişsiz Oflayn Axtarış:** Daxili Python BM25 + wikilink qraf genişlənməsi (`expand`) və istəyə bağlı QMD/Ollama dəstəyi.
+* **Portativ Agent Orkestrasiyası (`tm-agent-orchestration`):** AutoSwarm prinsiplərindən ilhamlanan çoxagentli tapşırıq bölgüsü, paralel DAG icrası, gizli məlumatların maskalanması, sessiya bərpası və insan təsdiq qapıları.
 * **Məxfilik və Gizli Məlumatların Maskalanması:** `private: true` / `private_paths` istisnası və MCP/ixrac zamanı API açarlarının maskalanması.
 * **Təhlükəsiz Ehtiyat Nüsxə və Bərpa:** SHA-256 doğrulamalı `.tar.gz` arxivləri.
 
@@ -44,13 +45,16 @@ python3 -m tm_second_brain.cli --vault ./my-vault init --template developer-agen
 python3 -m tm_second_brain.cli --vault ./my-vault remember --title "Use WAL mode" --body "Enable SQLite WAL." --project core
 python3 -m tm_second_brain.cli --vault ./my-vault search "WAL" --project core
 python3 -m tm_second_brain.cli --vault ./my-vault install-adapter codex
+python3 -m tm_second_brain.cli --vault ./my-vault orchestrate list
 python3 -m tm_second_brain.cli --vault ./my-vault backup ./vault-backup.tar.gz
 ```
 
 ---
 
-## 5. Lisenziya və Model Şəffaflığı
+## 5. Memarlıq, Bacarıqlar və Lisenziya
 
+* **Agent Orkestrasiyası Bacarığı:** [`skills/tm-agent-orchestration/SKILL.md`](../../skills/tm-agent-orchestration/SKILL.md) — AutoSwarm prinsipli çoxagentli koordinasiya.
+* **Memarlıq və Müqavilələr:** [`ARCHITECTURE.md`](../../ARCHITECTURE.md), [`API-SPEC.md`](../../API-SPEC.md), [`ADAPTER-CONTRACTS.md`](../../ADAPTER-CONTRACTS.md) və [`INTEGRATION-SPEC.md`](../../INTEGRATION-SPEC.md)
 * **Model və Xərc Şəffaflığı:** [`MODEL-REQUIREMENTS.md`](../../MODEL-REQUIREMENTS.md)
 * **Lisenziya:** MIT License — [`LICENSE`](../../LICENSE) və [`THIRD_PARTY_NOTICES.md`](../../THIRD_PARTY_NOTICES.md)
 

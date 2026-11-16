@@ -14,6 +14,7 @@
 * **المصدر وكشف التعارضات وسجل التصحيحات:** لا يستبدل الحقائق بصمت أبداً؛ بل يحفظ الإصدارات السابقة عبر سلسلة `supersedes` / `superseded_by` وسجل `.tm-brain/corrections.jsonl`.
 * **عزل المشاريع والبيئات:** عزل صارم بين المشاريع، وكذلك بين **Hamzad Core** و**Main Hermes** و**Hermes Personal Desktop**.
 * **بحث محلي مجاني دون اتصال:** محرك BM25 مدمج بلغة Python + توسيع روابط الويكي (`expand`)، مع دعم اختياري لـ QMD وOllama.
+* **تنسيق الوكلاء المحمول (`tm-agent-orchestration`):** تفويض المهام بين عدة وكلاء، تنفيذ متوازي لمخططات DAG، تنقيح الأسرار، استئناف الجلسات المنقطعة، وبوابات الموافقة البشرية المستوحاة من AutoSwarm.
 * **الخصوصية وتنقيح الأسرار:** استبعاد الملاحظات الموسومة بـ `private: true` / `private_paths` وتنقيح مفاتيح API تلقائياً.
 * **نسخ احتياطي واستعادة آمنة:** أرشيفات `.tar.gz` محققة ببصمة SHA-256.
 
@@ -44,13 +45,16 @@ python3 -m tm_second_brain.cli --vault ./my-vault init --template developer-agen
 python3 -m tm_second_brain.cli --vault ./my-vault remember --title "Use WAL mode" --body "Enable SQLite WAL." --project core
 python3 -m tm_second_brain.cli --vault ./my-vault search "WAL" --project core
 python3 -m tm_second_brain.cli --vault ./my-vault install-adapter codex
+python3 -m tm_second_brain.cli --vault ./my-vault orchestrate list
 python3 -m tm_second_brain.cli --vault ./my-vault backup ./vault-backup.tar.gz
 ```
 
 ---
 
-## ٥. الترخيص وشفافية النماذج
+## ٥. المعمارية والمهارات والترخيص
 
+* **مهارة تنسيق الوكلاء القياسية:** [`skills/tm-agent-orchestration/SKILL.md`](../../skills/tm-agent-orchestration/SKILL.md) — تنسيق متقدم للوكلاء مستوحى من AutoSwarm.
+* **المعمارية والعقود:** [`ARCHITECTURE.md`](../../ARCHITECTURE.md) و[`API-SPEC.md`](../../API-SPEC.md) و[`ADAPTER-CONTRACTS.md`](../../ADAPTER-CONTRACTS.md) و[`INTEGRATION-SPEC.md`](../../INTEGRATION-SPEC.md)
 * **شفافية النماذج والتكلفة:** [`MODEL-REQUIREMENTS.md`](../../MODEL-REQUIREMENTS.md)
 * **الترخيص:** MIT License — [`LICENSE`](../../LICENSE) و[`THIRD_PARTY_NOTICES.md`](../../THIRD_PARTY_NOTICES.md)
 

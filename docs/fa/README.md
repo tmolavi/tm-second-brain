@@ -14,6 +14,7 @@
 * **منشأ، تشخیص تعارض و تاریخچه اصلاحات:** هرگز داده‌ها را بی‌صدا بازنویسی نمی‌کند؛ نسخه‌های قبلی با زنجیره `supersedes` / `superseded_by` و فایل ثبت اصلاحات (`.tm-brain/corrections.jsonl`) حفظ می‌شوند.
 * **جداسازی پروژه و محیط‌ها:** جداسازی دقیق بین پروژه‌ها و همچنین بین **Hamzad Core**، **Main Hermes** و **Hermes Personal Desktop**.
 * **بازیابی آفلاین رایگان:** موتور داخلی BM25 + گسترش گراف لینک‌های ویکی (`expand`)، همراه با رابط قابل تعویض برای QMD یا Ollama.
+* **ارکستراسیون پرتابل ایجنت‌ها (`tm-agent-orchestration`):** تفویض وظایف چندایجنت، اجرای موازی DAG، پاک‌سازی اسرار از پیام‌ها، بازیابی نشست‌های متوقف‌شده و گیت‌های تأیید انسانی الهام‌گرفته از AutoSwarm.
 * **حریم خصوصی و سانسور اسرار:** حذف خودکار یادداشت‌های `private: true` و پنهان‌سازی کلیدهای API و توکن‌ها در MCP، خروجی‌ها و پل‌ها.
 * **پشتیبان‌گیری و بازیابی امن:** آرشیو `.tar.gz` با راستی‌آزمایی SHA-256 و اسنپ‌شات ایمنی پیش از بازنویسی.
 
@@ -44,13 +45,16 @@ python3 -m tm_second_brain.cli --vault ./my-vault init --template developer-agen
 python3 -m tm_second_brain.cli --vault ./my-vault remember --title "Use WAL mode" --body "Enable SQLite WAL." --project core
 python3 -m tm_second_brain.cli --vault ./my-vault search "WAL" --project core
 python3 -m tm_second_brain.cli --vault ./my-vault install-adapter codex
+python3 -m tm_second_brain.cli --vault ./my-vault orchestrate list
 python3 -m tm_second_brain.cli --vault ./my-vault backup ./vault-backup.tar.gz
 ```
 
 ---
 
-## ۵. مجوز و شفافیت مدل‌ها
+## ۵. معماری، مهارت‌ها و مجوز انتشار
 
+* **مهارت استاندارد ارکستراسیون ایجنت‌ها:** [`skills/tm-agent-orchestration/SKILL.md`](../../skills/tm-agent-orchestration/SKILL.md) — هماهنگی چندایجنت الهام‌گرفته از AutoSwarm.
+* **اسناد معماری و قراردادها:** [`ARCHITECTURE.md`](../../ARCHITECTURE.md)، [`API-SPEC.md`](../../API-SPEC.md)، [`ADAPTER-CONTRACTS.md`](../../ADAPTER-CONTRACTS.md) و [`INTEGRATION-SPEC.md`](../../INTEGRATION-SPEC.md)
 * **شفافیت مدل و هزینه:** [`MODEL-REQUIREMENTS.md`](../../MODEL-REQUIREMENTS.md)
 * **مجوز انتشار:** MIT License — [`LICENSE`](../../LICENSE) و [`THIRD_PARTY_NOTICES.md`](../../THIRD_PARTY_NOTICES.md)
 

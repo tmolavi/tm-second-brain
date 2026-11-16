@@ -18,6 +18,7 @@
 * **Provenance, Conflict Detection & Correction History:** Never silently overwrites facts; supersedes prior versions with immutable `.tm-brain/corrections.jsonl` audit logs.
 * **Project-Scoped & Environment Isolation:** Strict isolation across projects and between **Hamzad Core**, **Main Hermes** (Finland server), and **Hermes Personal Desktop** (Mac local).
 * **Zero-Cost Offline Retrieval:** Built-in Python BM25 + wikilink graph expansion (`expand`), with pluggable `RetrievalBackend` for optional QMD or Ollama.
+* **Portable Agent Orchestration (`tm-agent-orchestration`):** AutoSwarm-inspired multi-agent delegation, parallel DAG execution, secret-redacted task envelopes, durable session recovery, and tokenized approval gates.
 * **Privacy & Secret Redaction:** `private: true` / `private_paths` exclusion and automatic redaction of API keys/tokens across MCP, exports, and bridges.
 * **Safe Backup, Restore & Starter Vaults:** SHA-256 verified `.tar.gz` backups with pre-restore snapshots and three ready-to-use Obsidian vault templates.
 
@@ -59,14 +60,18 @@ python3 -m tm_second_brain.cli --vault ./my-vault search "WAL" --project core
 # Install an agent adapter (codex | claude-code | gemini-cli | opencode | goose | antigravity)
 python3 -m tm_second_brain.cli --vault ./my-vault install-adapter codex
 
+# Multi-Agent Orchestration session inspection
+python3 -m tm_second_brain.cli --vault ./my-vault orchestrate list
+
 # Create a SHA-256 verified backup
 python3 -m tm_second_brain.cli --vault ./my-vault backup ./vault-backup.tar.gz
 ```
 
 ---
 
-## 5. Architecture, Model Requirements & License
+## 5. Architecture, Skills & Model Requirements
 
+* **Agent Skills:** [`skills/tm-agent-orchestration/SKILL.md`](skills/tm-agent-orchestration/SKILL.md) — portable AutoSwarm-inspired multi-agent coordination.
 * **Architecture & Contracts:** [`ARCHITECTURE.md`](ARCHITECTURE.md), [`API-SPEC.md`](API-SPEC.md), [`ADAPTER-CONTRACTS.md`](ADAPTER-CONTRACTS.md), [`INTEGRATION-SPEC.md`](INTEGRATION-SPEC.md)
 * **Model & Cost Transparency:** [`MODEL-REQUIREMENTS.md`](MODEL-REQUIREMENTS.md) ($0.00 default, zero mandatory API keys)
 * **License:** MIT License — [`LICENSE`](LICENSE) and [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)

@@ -2,6 +2,20 @@
 
 All notable changes to `tm-second-brain` will be documented in this file.
 
+## [0.3.0] - 2026-11-16
+### Added
+- **Portable Agent Orchestration Skill (`tm-agent-orchestration`):** AutoSwarm-inspired multi-agent coordination protocol without introducing duplicate orchestration engines, competing model routers, or external dependencies.
+- **Pure-Python Orchestration Engine (`tm_second_brain.orchestration`):**
+  - `AgentOrchestrator`: Multi-agent delegation, parallel DAG execution, secret-redacted inter-agent envelopes, approval gates, and result aggregation.
+  - `SessionJournal`: Durable session state persistence under `.tm-brain/orchestration_sessions/<session_id>.json` enabling resumption of interrupted sessions without duplicate side effects.
+  - `TaskUnit`, `TaskEnvelope`, `ApprovalRequest`, `ExecutionRecord`, `AggregationResult`, `AgentRole`.
+- **CLI Commands:** Added `tm-brain orchestrate list` and `tm-brain orchestrate status <session_id>`.
+- **Ecosystem Rollout & Adapter Synchronization:**
+  - Deployed `tm-agent-orchestration` to Antigravity (`~/.gemini/config/skills/`), Hermes Main (`~/.hermes/skills/`), Hermes Personal Desktop (`hermes-mac-distribution/skills/`), and Molavi Agentic OS (`skills/orchestration/`).
+  - Added `record_orchestration_event()` to `HamzadBridge` for idempotent Hamzad Core event logging.
+- **Acceptance Tests:** Added `tests/test_agent_orchestration.py` validating 10 required scenarios (52 total tests passing).
+- **5-Language Documentation Synchronization:** Updated English, Persian, Turkish, Azerbaijani, and Arabic README and Guide documentation.
+
 ## [0.2.0] - 2026-11-14
 ### Added
 - **Architecture Decision Record (ADR) & Rejected Decisions Ledger:** Added `DecisionLedger` (`tm_second_brain.learning.decision_ledger`) with append-only JSON persistence in `.tm-brain/decision-ledger.json` and automatic Markdown generation in `Decisions/DECISION_LEDGER.md`.

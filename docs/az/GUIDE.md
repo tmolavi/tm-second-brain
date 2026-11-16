@@ -28,7 +28,7 @@ tm-brain --vault ./my-vault init --template developer-agent
 
 1. **Qat 1 (Kanonik Saxlama):** `memories/` altında Markdown + YAML frontmatter + wikilink-lər, `working-dir/agent-log/` altında fəaliyyət jurnalları və yenidən qurula bilən SQLite FTS5 keşi `.tm-brain/index.db` (WAL rejimi).
 2. **Qat 2 (Saf Python Nüvəsi):** Yaddaş həyat dövrü (`draft` → `active` → `superseded` → `archived`), mənşə izlənməsi, toqquşma aşkarlanması, layihə/mühit izolyasiyası, BM25 + qraf hibrid axtarış, L1→L2 öyrənmə qapısı və SHA-256 ehtiyat nüsxə/bərpa.
-3. **Qat 3 (Adapterlər):** Obsidian, stdio MCP (`tm-brain mcp`), kodlaşdırma agentləri (`codex`, `claude-code`, `gemini-cli`, `opencode`, `goose`, `antigravity`) və dörd izolyasiya olunmuş TM hədəfi (`hamzad-core`, `main-hermes`, `hermes-personal-desktop-finland`, `hermes-personal-desktop-mac`).
+3. **Qat 3 (Adapterlər və Orkestrasiya):** Obsidian, stdio MCP (`tm-brain mcp`), kodlaşdırma agentləri (`codex`, `claude-code`, `gemini-cli`, `opencode`, `goose`, `antigravity`), orkestrasiya bacarığı (`tm-agent-orchestration`) və dörd izolyasiya olunmuş TM hədəfi (`hamzad-core`, `main-hermes`, `hermes-personal-desktop-finland`, `hermes-personal-desktop-mac`).
 
 ## 4. İstifadə Nümunələri
 
@@ -36,6 +36,8 @@ tm-brain --vault ./my-vault init --template developer-agent
 tm-brain --vault ./my-vault remember --title "WAL Mode" --body "Enable SQLite WAL." --project core --confidence verified --verification "pytest"
 tm-brain --vault ./my-vault search "WAL" --project core
 tm-brain --vault ./my-vault correct mem_20261112_abc123 --title "WAL Mode" --body "Enable WAL + synchronous=NORMAL." --reason "Throughput tuning"
+tm-brain --vault ./my-vault orchestrate list
+tm-brain --vault ./my-vault orchestrate status sess_001
 tm-brain --vault ./my-vault learn log --skill code-review --outcome missed --rule "Check empty inputs"
 tm-brain --vault ./my-vault learn scan --min-occurrences 2
 tm-brain --vault ./my-vault backup ./backup.tar.gz

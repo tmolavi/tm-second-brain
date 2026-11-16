@@ -94,6 +94,12 @@ def _build_parser() -> argparse.ArgumentParser:
     act.add_argument("--summary", required=True)
     act.add_argument("--project", default=None)
 
+    orc = sub.add_parser("orchestrate", help="Inspect and control multi-agent orchestration sessions")
+    orc_sub = orc.add_subparsers(dest="orc_cmd", required=True)
+    orc_sub.add_parser("list", help="List persisted orchestration sessions")
+    orc_stat = orc_sub.add_parser("status", help="Get details of a session")
+    orc_stat.add_argument("session_id")
+
     return parser
 
 
@@ -233,6 +239,22 @@ def main(argv: Sequence[str] | None = None) -> int:
         )
         print(json.dumps(rec, indent=2))
         return 0
+
+    if args.command == "orchestrate":
+        from .orchestration.session_journal import SessionJournal
+
+        journal = SessionJournal(store.vault_root)
+        if args.orc_cmd == "list":
+            sessions = journal.list_sessions()
+            print(json.dumps(sessions, indent=2, ensure_ascii=False))
+            return 0
+        if args.orc_cmd == "status":
+            session_data = journal.load_session(args.session_id)
+            if not session_data:
+                print(json.dumps({"error": f"Session '{args.session_id}' not found."}, indent=2))
+                return 1
+            print(json.dumps(session_data, indent=2, ensure_ascii=False))
+            return 0
 
     return 1
 

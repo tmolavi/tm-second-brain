@@ -122,3 +122,24 @@ class HamzadBridge:
             },
         )
         return True
+
+    def record_orchestration_event(
+        self,
+        session_id: str,
+        agent_id: str,
+        task_name: str,
+        outcome: dict[str, Any],
+    ) -> None:
+        """Record an orchestration event from Hamzad into vault with provenance and privacy redaction."""
+        safe_outcome = self.store.privacy.redact(json.dumps(outcome, ensure_ascii=False))
+        self.store.remember(
+            f"Hamzad Orchestration: {task_name}",
+            safe_outcome,
+            scope=MemoryScope.PROJECT,
+            projects=["hamzad-core"],
+            confidence=ConfidenceLevel.INFERRED,
+            source_agent=f"hamzad:{agent_id}",
+            origin=f"hamzad-orchestration:{session_id}",
+            tags=["hamzad-sync", "orchestration", f"session:{session_id}"],
+        )
+

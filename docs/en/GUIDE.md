@@ -28,7 +28,7 @@ Optional semantic adapters (`QMDRetrievalAdapter`, `OllamaRetrievalAdapter`) are
 
 1. **Layer 1 (Canonical Storage):** Markdown + YAML frontmatter + wikilinks under `memories/`, `working-dir/agent-log/`, and rebuildable SQLite FTS5 cache `.tm-brain/index.db` (WAL mode).
 2. **Layer 2 (Pure Python Core):** Memory lifecycle (`draft` → `active` → `superseded` → `archived`), provenance, conflict detection, project/environment isolation, BM25 + graph hybrid retrieval, L1→L2 learning gate, and SHA-256 backup/restore.
-3. **Layer 3 (Adapters):** Obsidian, stdio MCP (`tm-brain mcp`), coding agents (`codex`, `claude-code`, `gemini-cli`, `opencode`, `goose`, `antigravity`), and four isolated TM targets (`hamzad-core`, `main-hermes`, `hermes-personal-desktop-finland`, `hermes-personal-desktop-mac`).
+3. **Layer 3 (Adapters & Orchestration):** Obsidian, stdio MCP (`tm-brain mcp`), coding agents (`codex`, `claude-code`, `gemini-cli`, `opencode`, `goose`, `antigravity`), portable orchestration (`tm-agent-orchestration`), and four isolated TM targets (`hamzad-core`, `main-hermes`, `hermes-personal-desktop-finland`, `hermes-personal-desktop-mac`).
 
 ## 4. Usage Examples
 
@@ -36,6 +36,8 @@ Optional semantic adapters (`QMDRetrievalAdapter`, `OllamaRetrievalAdapter`) are
 tm-brain --vault ./my-vault remember --title "WAL Mode" --body "Enable SQLite WAL." --project core --confidence verified --verification "pytest"
 tm-brain --vault ./my-vault search "WAL" --project core
 tm-brain --vault ./my-vault correct mem_20261112_abc123 --title "WAL Mode" --body "Enable WAL + synchronous=NORMAL." --reason "Throughput tuning"
+tm-brain --vault ./my-vault orchestrate list
+tm-brain --vault ./my-vault orchestrate status sess_001
 tm-brain --vault ./my-vault learn log --skill code-review --outcome missed --rule "Check empty inputs"
 tm-brain --vault ./my-vault learn scan --min-occurrences 2
 tm-brain --vault ./my-vault backup ./backup.tar.gz
